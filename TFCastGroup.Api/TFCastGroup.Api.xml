@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TFCastGroup.Api</name>
+    </assembly>
+    <members>
+        <member name="M:TFCastGroup.Api.Controllers.CursosController.GetAllCursos">
+            <summary>
+            Obter todos os cursos
+            </summary>
+            <remarks>
+            
+            
+                Obtém todos os cursos cadastrados.
+                
+            </remarks>
+        </member>
+        <member name="M:TFCastGroup.Api.Controllers.CursosController.GetByIdCurso(System.Int32)">
+            <summary>
+            Obtém curso por id
+            </summary>
+            <remarks>
+            
+            
+                Obtém o curso por id. Caso você não tenha o id consulte o endpoint GetAllCursos
+                
+            </remarks>
+        </member>
+        <member name="M:TFCastGroup.Api.Controllers.CursosController.Post(TFCastGroup.Dto.DtoCurso)">
+            <summary>
+            Cadastrar curso
+            </summary>
+            <remarks>
+            
+             Cadastra curso de acordo com as seguintes regras
+                Não é permitido a inclusão de cursos dentro do mesmo período.
+                Não será permitido a inclusão de cursos com a data de início menor que a data atual
+            </remarks>
+        </member>
+        <member name="M:TFCastGroup.Api.Controllers.CursosController.EditarCurso(TFCastGroup.Dto.DtoCurso)">
+            <summary>
+            Editar um Curso
+            </summary>
+            <remarks>
+            Edita um curso já cadastrado
+            
+                A edição do curso segue a regra do endpoint Cadastrar.
+                
+            </remarks>
+        </member>
+        <member name="M:TFCastGroup.Api.Controllers.CursosController.DeleteCurso(System.Int32)">
+            <summary>
+            Deletar um Curso
+            </summary>
+            <remarks>
+            Para deletar um curso passe o Id como parâmetro. Caso você não tenha o id consulte o endpoint GetAllCursos
+            
+                Assim que o endpoint DeleteCurso for executado essa operação não terá como ser desfeita.
+                
+            </remarks>
+        </member>
+    </members>
+</doc>

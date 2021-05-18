@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TFCastGroup.Domain\TFCastGroup.Domain.csproj" />
+    <ProjectReference Include="..\TFCastGroup.Dto\TFCastGroup.Dto.csproj" />
+  </ItemGroup>
+
+</Project>
