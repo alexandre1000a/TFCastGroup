@@ -26,7 +26,7 @@
                 
             </remarks>
         </member>
-        <member name="M:TFCastGroup.Api.Controllers.CursosController.Post(TFCastGroup.Dto.DtoCurso)">
+        <member name="M:TFCastGroup.Api.Controllers.CursosController.Cadastrar(TFCastGroup.Dto.DtoCurso)">
             <summary>
             Cadastrar curso
             </summary>

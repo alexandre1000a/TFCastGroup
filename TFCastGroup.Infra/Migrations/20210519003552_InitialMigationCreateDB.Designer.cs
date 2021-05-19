@@ -10,8 +10,8 @@ using TFCastGroup.Infra.Configuration;
 namespace TFCastGroup.Infra.Migrations
 {
     [DbContext(typeof(ContextCastGroup))]
-    [Migration("20210517232730_InitalCreateDB")]
-    partial class InitalCreateDB
+    [Migration("20210519003552_InitialMigationCreateDB")]
+    partial class InitialMigationCreateDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,16 +27,11 @@ namespace TFCastGroup.Infra.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("codigo");
 
-                    b.Property<long?>("CursoId")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("Descricao")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("descricao");
 
                     b.HasKey("Codigo");
-
-                    b.HasIndex("CursoId");
 
                     b.ToTable("Categoria");
 
@@ -96,15 +91,6 @@ namespace TFCastGroup.Infra.Migrations
                     b.HasIndex("IdCategoria");
 
                     b.ToTable("Curso");
-                });
-
-            modelBuilder.Entity("TFCastGroup.Domain.Model.Categoria", b =>
-                {
-                    b.HasOne("TFCastGroup.Domain.Model.Curso", "Curso")
-                        .WithMany()
-                        .HasForeignKey("CursoId");
-
-                    b.Navigation("Curso");
                 });
 
             modelBuilder.Entity("TFCastGroup.Domain.Model.Curso", b =>

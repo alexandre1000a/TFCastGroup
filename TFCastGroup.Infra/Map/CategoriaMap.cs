@@ -15,11 +15,7 @@ namespace TFCastGroup.Infra.Map
             builder.Property(p => p.Codigo).ValueGeneratedNever();
             builder.Property(x => x.Codigo).HasColumnName("codigo");
             builder.Property(x => x.Descricao).HasColumnName("descricao");
-
-         
-
-           
-
+            builder.Ignore(c => c.Curso);
 
             List<Categoria> categorias = new List<Categoria> { new Categoria
             {

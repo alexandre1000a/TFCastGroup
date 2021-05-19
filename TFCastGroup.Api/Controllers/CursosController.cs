@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Http.ModelBinding;
 using TFCastGroup.Dto;
 using TFCastGroup.Service;
 using TFCastGroup.Service.Interface;
@@ -71,13 +72,18 @@ namespace TFCastGroup.Api.Controllers
         /// </remarks>
         [HttpPost]
         [Route("Cadastrar")]
-        public async Task<ActionResult> Post([FromBody] DtoCurso dtoCursoRequest)
+        public async Task<ActionResult> Cadastrar([FromBody] DtoCurso dtoCursoRequest)
         {
+            var allErrors = ModelState.Values.SelectMany(v => v.Errors);
+            if (!ModelState.IsValid) return BadRequest(allErrors);
+
+
+
             if (dtoCursoRequest.DataInicio < DateTime.Now)
                 return BadRequest("Data início menor que a data atual.");
 
-            var dtoCurso = await  _cursoService.Cadastrar(dtoCursoRequest);
-            return Ok(dtoCurso); 
+            var dtoCurso = await _cursoService.Cadastrar(dtoCursoRequest);
+            return Ok(dtoCurso);
 
         }
         /// <summary>
@@ -94,9 +100,13 @@ namespace TFCastGroup.Api.Controllers
         [Route("EditarCurso")]
         public async Task<ActionResult> EditarCurso([FromBody] DtoCurso dtoCurso)
         {
-            if (dtoCurso == null) return BadRequest(new {Mensagem = "Objeto nulo" });
+            var allErrors = ModelState.Values.SelectMany(v => v.Errors);
+            if (!ModelState.IsValid) return BadRequest(allErrors);
+
+
+            if (dtoCurso == null) return BadRequest(new { Mensagem = "Objeto nulo" });
             if (dtoCurso.DataInicio < DateTime.Now) return BadRequest(new { Mensagem = "Data deve ser maior que hoje." });
-            var update= _cursoService.UpdateCurso(dtoCurso).Result;
+            var update = _cursoService.UpdateCurso(dtoCurso).Result;
 
             return Ok(update);
         }
@@ -113,11 +123,11 @@ namespace TFCastGroup.Api.Controllers
         /// </remarks>
         [HttpDelete]
         [Route("DeleteCurso")]
-        public async Task<ActionResult> DeleteCurso([FromQuery]int id)
+        public async Task<ActionResult> DeleteCurso([FromQuery] int id)
         {
             if (id == 0) return BadRequest(new { Mensagem = "id deve ser diferente de zero." });
 
-            var delete = _cursoService.DeleteCurso(id);
+            var delete = await _cursoService.DeleteCurso(id);
 
             return Ok(delete);
 

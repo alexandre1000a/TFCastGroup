@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TFCastGroup.Domain\TFCastGroup.Domain.csproj" />
+    <ProjectReference Include="..\TFCastGroup.Infra\TFCastGroup.Infra.csproj" />
     <ProjectReference Include="..\TFCastGroup.Service\TFCastGroup.Service.csproj" />
   </ItemGroup>
 

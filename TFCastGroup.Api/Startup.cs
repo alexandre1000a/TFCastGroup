@@ -21,6 +21,7 @@ using TFCastGroup.Infra.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.PlatformAbstractions;
 using System.IO;
+using Microsoft.AspNetCore.Rewrite;
 
 namespace TFCastGroup.Api
 {
@@ -91,6 +92,8 @@ namespace TFCastGroup.Api
             app.UseSwagger();
             app.UseSwaggerUI(options => options.RoutePrefix = string.Empty);
             app.UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v2/swagger.json", "API Cursos"));
+
+          
         }
     }
 }

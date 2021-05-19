@@ -18,8 +18,8 @@ namespace TFCastGroup.TDD.Builder
         public CursoTestBuilder Default()
         {
             _curso.Descricao = "Matemática";
-            _curso.DataInicio = new DateTime();
-            _curso.DataTermino = new DateTime().AddDays(2);
+            _curso.DataInicio = DateTime.Now;
+            _curso.DataTermino = DateTime.Now.AddDays(2);
 
             return this;
         }
